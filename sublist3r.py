@@ -947,6 +947,8 @@ def main(domain, threads, savefile, ports, silent, verbose, enable_bruteforce, e
 
     if subdomains:
         subdomains = sorted(subdomains, key=subdomain_sorting_key)
+        # Append the domain to the result, without the "http://" string.
+        subdomains.insert(0, self.domain.replace("http://", ""))
 
         if savefile:
             write_file(savefile, subdomains)
